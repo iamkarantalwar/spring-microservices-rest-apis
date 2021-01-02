@@ -6,14 +6,16 @@ phases:
       java: corretto8
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+    - echo In the pre_build phase...
   build:
     commands:
-      - echo Build started on `date`
-      - gradle build
+    - echo Build started on `date`
   post_build:
     commands:
-      - echo Build completed on `date`
+    - echo Build completed on `date`
+    - mvn package
+    - mv target/todos-0.0.1-SNAPSHOT.war todos-0.0.1-SNAPSHOT.war
 artifacts:
   files:
-    - build/libs/application.jar
+  - todos-0.0.1-SNAPSHOT.war
+  - .ebextensions/**/*
